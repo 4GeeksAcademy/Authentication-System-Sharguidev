@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Orbitron:wght@400..900&display=swap');
+
 .container-footer {
     position: absolute;
     width: 100%;
+    height: fit-content;
 }
 
 .pie-pagina{
     width: 100%;
-    background-color: black;
+    background-color: #001233;
     color: #fff;
 }
 
@@ -29,18 +32,21 @@
 
 .pie-pagina .grupo-1 .box figure img{
     width: 200px;
+    margin-right: 100px;
 
 }
 
 .pie-pagina .grupo-1 .box h2{
     color: #fff;
     margin-bottom: 25px;
+    font-family: "DynaPuff", cursive;
     font-size: 20px;
 }
 
 .pie-pagina .grupo-1 .box p{
     color: #efefef;
     margin-bottom: 10px;
+    font-family: "DynaPuff", cursive;
 }   
 
 .pie-pagina .grupo-1 .red-social a{
@@ -49,26 +55,27 @@
     width: 45px;
     height: 45px;
     line-height: 45px;
-    color: #fff;
+    color: #000;
     margin-right: 10px;
-    background-color: #b64359;
+    background-color: #979dac;
     text-align: center;
     transition: all 300ms ease;
 }
 
 .pie-pagina .grupo-1 .red-social a:hover{
-    color: #fcc0c5;
+    color: #eff6e0;
 }
 
 .pie-pagina .grupo-2{
-    background-color: #fcc0c5;
+    background-color: #023e7d;
     padding: 15px 10px;
     text-align: center;
-    color: #080808;
+    color: #fff;
 }
 
 .pie-pagina .grupo-2 small{
-    font-size: 15px;
+    font-size: 18px;
+    font-family: "DynaPuff", cursive;
 }
 
 /* Estilos para dispositivos móviles */
