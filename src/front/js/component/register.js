@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./../../styles/register.css"
 import { useNavigate, Navigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 export const Register = () => {
+    const [showPassword, setShowPassword] = useState(false);
+    const [showPassword2, setShowPassword2] = useState(false);
     const navigate = useNavigate();
 
     return (
@@ -63,8 +66,8 @@ export const Register = () => {
                         d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"
                     ></path>
                 </svg>
-                <input type="password" className="input" placeholder="Enter your Password" />
-
+                <input type={showPassword ? "text" : "password"} className="input" placeholder="Enter your Password" id="password" />
+                <div id="togglePass" onClick={() => setShowPassword(!showPassword)}>{showPassword ? <i class="fa-regular fa-eye-slash"></i> : <i class="fa-regular fa-eye"></i>}</div>
             </div>
             <div className="flex-column">
                 <label>Re-Type Password </label>
@@ -83,12 +86,12 @@ export const Register = () => {
                         d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"
                     ></path>
                 </svg>
-                <input type="password" className="input" placeholder="Enter your Password" />
-
+                <input type={showPassword ? "text" : "password"} className="input" placeholder="Enter your Password" id="password2" />
+                <div id="togglePass" onClick={() => setShowPassword(!showPassword)}>{showPassword ? <i class="fa-regular fa-eye-slash"></i> : <i class="fa-regular fa-eye"></i>}</div>
             </div>
 
 
-            <button className="button-submit">Sign Up</button>
+            <button className="button-submit" onClick={() => errorManage()}>Let's Go!</button>
             <p className="p" onClick={() => navigate("/login")}>Already have a account? <span className="span">login</span></p>
             <div className="flex-row">
 
@@ -97,4 +100,15 @@ export const Register = () => {
     );
 }
 
+
+function errorManage() {
+    let password = document.getElementById("password").value;
+    let passwordConfirm = document.getElementById("password2").value;
+
+    if (password !== passwordConfirm) {
+        toast.error("passwords don't match");
+        return false;
+    }
+    return true;
+}
 
