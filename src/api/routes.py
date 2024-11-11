@@ -35,18 +35,29 @@ def register():
         return jsonify({"error": "Missing required fields"}), 400
 
     # check if user already exists  
-    user = User.query.filter_by(email=email).first()
-    if user:
+    existing_user = User.query.filter_by(email=email).first()
+    if existing_user:
         return jsonify({"error": "User already exists"}), 400
 
     # create a new user
-    new_user = User(name=name, email=email, password=password)
+    new_user = User(
+        name=name, 
+        email=email, 
+        password=password
+        )
+    
+    #Add the new user to the database
     db.session.add(new_user)
     db.session.commit()
 
     access_token = create_access_token(identity=email)
 
-    return jsonify({"message": "User created successfully"}), 201
+    return jsonify({
+        "name": name,
+        "email": email,
+        "access_token": access_token,
+        "user": new_user.serialize()
+        }), 201
 
 
 @api.route('/login', methods=['POST'])  
@@ -69,4 +80,8 @@ def login():
 
     access_token = create_access_token(identity=email)
 
-    return jsonify({"message": "User logged in successfully", "access_token": access_token}), 200
+    return jsonify({
+        "message": "User logged in successfully", 
+        "access_token": access_token,
+        "user": user.serialize()
+        }), 200

@@ -1,15 +1,32 @@
-import React, { useState } from "react";
+import React, { act, useEffect, useState } from "react";
 import "./../../styles/register.css"
 import { useNavigate, Navigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const [showPassword2, setShowPassword2] = useState(false);
+
     const navigate = useNavigate();
 
+
+    const registerUser = async (user) => {
+        if (user.password !== user.confirmPassword) {
+            toast.error("Passwords do not match");
+            return;
+        }
+        await actions.register(user.name, user.email, user.password);
+        navigate("/");
+    }
+
+
+    useEffect(() => {
+        if (store.token) {
+            navigate("/");
+        }
+    }, []);
+
     return (
-        <form className="form my-5">
+        <div className="form my-5">
             <div className="flex-column">
                 <h2 className="text-center my-3">Register</h2>
                 <label>Name </label>
@@ -91,24 +108,15 @@ export const Register = () => {
             </div>
 
 
-            <button className="button-submit" onClick={() => errorManage()}>Let's Go!</button>
+            <button className="button-submit" onClick={() => registerUser(user)}>Let's Go!</button>
             <p className="p" onClick={() => navigate("/login")}>Already have a account? <span className="span">login</span></p>
             <div className="flex-row">
 
             </div>
-        </form>
+        </div>
     );
 }
 
 
-function errorManage() {
-    let password = document.getElementById("password").value;
-    let passwordConfirm = document.getElementById("password2").value;
 
-    if (password !== passwordConfirm) {
-        toast.error("passwords don't match");
-        return false;
-    }
-    return true;
-}
 

@@ -1,12 +1,26 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./../../styles/navbar.css";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import "./../../styles/navbar.css";
+import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 export const Sharnav = () => {
+
+	const { actions, store } = useContext(Context);
+	const navigate = useNavigate();
+
+	const logout = async () => {
+		let resp = await actions.logout();
+		if (resp) {
+			navigate("/login");
+			toast.success("Logged out successfully 🎉");
+		}
+	};
+
 
 	return (
 
@@ -25,8 +39,22 @@ export const Sharnav = () => {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" className="ms-auto" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
-						<Nav.Link href="/login">Let's Login</Nav.Link>
-						<Nav.Link href="/">Let's Register</Nav.Link>
+						{store.token && (
+							<button className="btn" onClick={() => logout()}>Logout</button>
+							// <Nav.Link href="/" onClick={() => actions.logout()}>Let's Go Out</Nav.Link>
+						)}
+						{!store.token && (
+
+							<Nav.Link href="/login" >Let's Login</Nav.Link>
+						)}
+						{store.token && (
+							<Nav.Link href="/">Register an Employee</Nav.Link>
+						)}
+						{!store.token && (
+
+							<Nav.Link href="/">Let's Register</Nav.Link>
+						)}
+
 					</Nav>
 				</Navbar.Collapse>
 			</Container>
@@ -37,6 +65,7 @@ export const Sharnav = () => {
 
 
 };
+
 
 
 
