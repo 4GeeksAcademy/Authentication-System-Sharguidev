@@ -2,9 +2,13 @@ import React, { act, useEffect, useState } from "react";
 import "./../../styles/register.css"
 import { useNavigate, Navigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { Context } from "../store/appContext";
+import { useContext } from "react";
 
 export const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const { actions, store } = useContext(Context);
+    const [user, setUser] = useState({});
 
     const navigate = useNavigate();
 
@@ -44,7 +48,7 @@ export const Register = () => {
                         ></path>
                     </g>
                 </svg>
-                <input type="text" className="input" placeholder="Enter your Name" />
+                <input type="text" className="input" placeholder="Enter your Name" onChange={(e) => setUser({ ...user, name: e.target.value })} />
             </div>
             <div className="flex-column">
                 <label>Email </label>
@@ -62,7 +66,7 @@ export const Register = () => {
                         ></path>
                     </g>
                 </svg>
-                <input type="text" className="input" placeholder="Enter your Email" />
+                <input type="text" className="input" placeholder="Enter your Email" onChange={(e) => setUser({ ...user, email: e.target.value })} />
             </div>
 
 
@@ -83,8 +87,8 @@ export const Register = () => {
                         d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"
                     ></path>
                 </svg>
-                <input type={showPassword ? "text" : "password"} className="input" placeholder="Enter your Password" id="password" />
-                <div id="togglePass" onClick={() => setShowPassword(!showPassword)}>{showPassword ? <i class="fa-regular fa-eye-slash"></i> : <i class="fa-regular fa-eye"></i>}</div>
+                <input type={showPassword ? "text" : "password"} className="input" placeholder="Enter your Password" id="password" onChange={(e) => setUser({ ...user, password: e.target.value })} />
+                <div id="togglePass" onClick={() => setShowPassword(!showPassword)}>{showPassword ? <i className="fa-regular fa-eye-slash"></i> : <i className="fa-regular fa-eye"></i>}</div>
             </div>
             <div className="flex-column">
                 <label>Re-Type Password </label>
@@ -103,8 +107,8 @@ export const Register = () => {
                         d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"
                     ></path>
                 </svg>
-                <input type={showPassword ? "text" : "password"} className="input" placeholder="Enter your Password" id="password2" />
-                <div id="togglePass" onClick={() => setShowPassword(!showPassword)}>{showPassword ? <i class="fa-regular fa-eye-slash"></i> : <i class="fa-regular fa-eye"></i>}</div>
+                <input type={showPassword ? "text" : "password"} className="input" placeholder="Enter your Password" id="password2" onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })} />
+                <div id="togglePass" onClick={() => setShowPassword(!showPassword)}>{showPassword ? <i className="fa-regular fa-eye-slash"></i> : <i className="fa-regular fa-eye"></i>}</div>
             </div>
 
 

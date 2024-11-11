@@ -78,37 +78,38 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			login: async (email, password) => {
+				const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({ email: email, password: password })
+				});
 
-				try {
-
-					const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json"
-						},
-						body: JSON.stringify({ email: email, password: password })
-					});
-
-					const data = await resp.json();
-
-					localStorage.setItem("token", data.token);
+				const data = await resp.json();
 
 
-					setStore({ token: data.token, user: data.user });
 
-					return true;
-				} catch (error) {
-					console.log("Error logging in", error)
+				localStorage.setItem("token", data.token);
+				setStore({ token: data.token });
+				setStore({ user: data.user });
+
+
+				if (!resp.ok) {
+					toast.error("Wrong password or email 🙅🏽‍♂️");
 					return false;
+				} else {
+					toast.success("User logged in successfully 🎉");
 				}
-			}
-		},
+			},
 
-		logout: () => {
-			localStorage.removeItem("token");
-			setStore({ token: null, user: null });
-			toast.success("Logged out successfully 🎉");
+			logout: () => {
+				localStorage.removeItem("token");
+				setStore({ token: null, user: null });
+				toast.success("Logged out successfully 🎉");
+			}
 		}
+
 	};
 };
 

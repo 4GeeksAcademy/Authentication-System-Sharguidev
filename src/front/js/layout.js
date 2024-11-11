@@ -14,6 +14,7 @@ import { Register } from "./component/register";
 
 import { Sharnav } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Private } from "./pages/private";
 
 //create your first component
 const Layout = () => {
@@ -35,6 +36,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<Login />} path="/login" />
                         <Route element={<Register />} path="/register" />
+                        <Route element={<Private />} path="/private" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

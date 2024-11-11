@@ -18,6 +18,7 @@ export const Sharnav = () => {
 		if (resp) {
 			navigate("/login");
 			toast.success("Logged out successfully 🎉");
+			return;
 		}
 	};
 
@@ -48,11 +49,11 @@ export const Sharnav = () => {
 							<Nav.Link href="/login" >Let's Login</Nav.Link>
 						)}
 						{store.token && (
-							<Nav.Link href="/">Register an Employee</Nav.Link>
+							<Nav.Link href="/private">Register an Employee</Nav.Link>
 						)}
 						{!store.token && (
 
-							<Nav.Link href="/">Let's Register</Nav.Link>
+							<Nav.Link href="/register">Let's Register</Nav.Link>
 						)}
 
 					</Nav>
