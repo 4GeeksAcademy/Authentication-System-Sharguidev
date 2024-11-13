@@ -16,11 +16,14 @@ export default function Login() {
 
     // navigate("/private");
 
+
+
     useEffect(() => {
+        console.log(store.token);
         if (store.token) {
             navigate("/private");
         }
-    }, []);
+    }, [store.token]);
 
     return (
 

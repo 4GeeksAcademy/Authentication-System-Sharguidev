@@ -90,8 +90,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 
-				localStorage.setItem("token", data.token);
-				setStore({ token: data.token });
+				localStorage.setItem("token", data.access_token);
+				setStore({ token: data.access_token });
 				setStore({ user: data.user });
 
 

@@ -13,13 +13,11 @@ export const Sharnav = () => {
 	const { actions, store } = useContext(Context);
 	const navigate = useNavigate();
 
-	const logout = async () => {
-		let resp = await actions.logout();
-		if (resp) {
-			navigate("/login");
-			toast.success("Logged out successfully 🎉");
-			return;
-		}
+	const logout = () => {
+		actions.logout();
+		navigate("/login");
+		return;
+
 	};
 
 
