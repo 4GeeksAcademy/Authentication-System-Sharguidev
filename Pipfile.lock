@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "94a6703b952d22b68d3a5c0a0ba5acfe0104b92d0f991a972ff1bc9d0b15c43b"
+            "sha256": "08de9fd20833232578c061446ee708675635f568dd7d4dcac67ea918afe6bfe5"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -55,14 +55,23 @@
             "index": "pypi",
             "version": "==1.41.0"
         },
-        "flask": {
+        "colorama": {
             "hashes": [
-                "sha256:34e815dfaa43340d1d15a5c3a02b8476004037eb4840b34910c6e21679d288f3",
-                "sha256:ceb27b0af3823ea2737928a4d99d125a06175b8512c445cbd9a9ce200ef76842"
+                "sha256:08695f5cb7ed6e0531a20572697297273c47b8cae5a63ffc6d6ed5c201be6e44",
+                "sha256:4f1d9991f5acc0ca119f9d443620b77f9d6b33703e51011c16baf57afb285fc6"
             ],
             "index": "pypi",
-            "markers": "python_version >= '3.8'",
-            "version": "==3.0.3"
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6'",
+            "version": "==0.4.6"
+        },
+        "flask": {
+            "hashes": [
+                "sha256:5f873c5184c897c8d9d1b05df1e3d01b14910ce69607a117bd3277098a5836ac",
+                "sha256:d667207822eb83f1c4b50949b1623c8fc8d51f2341d65f72e1a1815397551136"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.9'",
+            "version": "==3.1.0"
         },
         "flask-admin": {
             "hashes": [
@@ -303,6 +312,15 @@
             "markers": "python_version >= '3.8'",
             "version": "==24.2"
         },
+        "psycopg": {
+            "hashes": [
+                "sha256:644d3973fe26908c73d4be746074f6e5224b03c1101d302d9a53bf565ad64907",
+                "sha256:a5764f67c27bec8bfac85764d23c534af2c27b893550377e37ce59c12aac47a2"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==3.2.3"
+        },
         "psycopg2-binary": {
             "hashes": [
                 "sha256:04392983d0bb89a8717772a193cfaac58871321e3ec69514e1c4e0d4957b5aff",
@@ -517,6 +535,14 @@
             "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==4.12.2"
+        },
+        "tzdata": {
+            "hashes": [
+                "sha256:7d85cc416e9382e69095b7bdf4afd9e3880418a2413feec7069d533d6b4e31cc",
+                "sha256:a48093786cdcde33cad18c2555e8532f34422074448fbc874186f0abd79565cd"
+            ],
+            "markers": "python_version >= '2'",
+            "version": "==2024.2"
         },
         "urllib3": {
             "hashes": [

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
-import { useState, useContext, useEffect } from "react";
 import "./../../styles/login.css"
 import { Navigate, useNavigate } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';

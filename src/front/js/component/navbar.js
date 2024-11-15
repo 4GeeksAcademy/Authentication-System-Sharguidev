@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./../../styles/navbar.css";
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 import "./../../styles/navbar.css";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
@@ -23,48 +20,29 @@ export const Sharnav = () => {
 
 	return (
 
-
-		<Navbar expand="lg" className="bg-body-tertiary py-3" style={{ fontFamily: "DynaPuff", fontSize: "18px" }}>
-			<Container className="container-navbar">
-				<Navbar.Brand href="/">
-					<img
-						alt=""
-						src="https://github.com/4GeeksAcademy/Authentication-System-Sharguidev/blob/main/src/front/img/Sharguidev_p.png?raw=true"
-						width="150"
-						height="50"
-						className="d-inline-block align-top"
-					/>{' '}
-				</Navbar.Brand>
-				<Navbar.Toggle aria-controls="basic-navbar-nav" className="ms-auto" />
-				<Navbar.Collapse id="basic-navbar-nav">
-					<Nav className="ms-auto">
+		<nav className="navbar navbar-expand-lg bg-body-tertiary">
+			<div className="container-fluid">
+				<Link className="navbar-brand" to="#">Sharguidev</Link>
+				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					<span className="navbar-toggler-icon"></span>
+				</button>
+				<div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+					<div className="navbar-nav ms-auto">
 						{store.token && (
-							<button className="btn" onClick={() => logout()}>Logout</button>
-							// <Nav.Link href="/" onClick={() => actions.logout()}>Let's Go Out</Nav.Link>
+							<>
+								<Link className="nav-link active" aria-current="page" to="#" onClick={() => logout()}>Logout</Link>
+								<Link className="nav-link active" aria-current="page" to="/private">Register an Employee</Link>
+							</>
 						)}
 						{!store.token && (
-
-							<Nav.Link href="/login" >Let's Login</Nav.Link>
+							<>
+								<Link className="nav-link" to="/register">Let's Register</Link>
+								<Link className="nav-link active" aria-current="page" to="/login">Let's Login</Link>
+							</>
 						)}
-						{store.token && (
-							<Nav.Link href="/private">Register an Employee</Nav.Link>
-						)}
-						{!store.token && (
-
-							<Nav.Link href="/register">Let's Register</Nav.Link>
-						)}
-
-					</Nav>
-				</Navbar.Collapse>
-			</Container>
-		</Navbar>
+					</div>
+				</div>
+			</div>
+		</nav>
 	);
-
-
-
-
-};
-
-
-
-
+}

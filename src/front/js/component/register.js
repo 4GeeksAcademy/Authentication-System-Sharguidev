@@ -1,9 +1,9 @@
-import React, { act, useEffect, useState } from "react";
+import React, { act, useEffect, useState, useContext } from "react";
 import "./../../styles/register.css"
 import { useNavigate, Navigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { Context } from "../store/appContext";
-import { useContext } from "react";
+
 
 export const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
